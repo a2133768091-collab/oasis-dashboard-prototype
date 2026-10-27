@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>工位绿洲 · 久坐提醒原型</title>
+<link rel="stylesheet" href="styles.css">
+<link rel="stylesheet" href="reminder.css">
+</head>
+<body>
+<div class="phone">
+
+  <!-- 顶部品牌区：返回看板 + 标题 -->
+  <header class="app-header">
+    <div class="brand">
+      <a class="header-link" href="index.html" title="返回数据看板" aria-label="返回数据看板">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="m12 19-7-7 7-7"/><path d="M19 12H5"/></svg>
+      </a>
+      <div class="brand-text">
+        <h1>久坐提醒</h1>
+        <p>工位绿洲 · 原型</p>
+      </div>
+    </div>
+    <span class="mock-badge">Mock</span>
+  </header>
+
+  <main class="view">
+
+    <!-- 久坐状态 hero：绿（正常）/ 金（超温和阈值）/ 红（超红线强提醒）三态渐变 -->
+    <section class="hero" id="hero">
+      <div class="hero-top">
+        <span class="hero-label">已连续久坐</span>
+        <span class="strong-badge" id="strongBadge" hidden>强提醒 <b id="strongCount">1</b>/3</span>
+      </div>
+      <div class="hero-min"><b id="sitMinutes">--</b><span>分钟</span></div>
+      <div class="hero-track">
+        <div class="hero-fill" id="heroFill"></div>
+        <i class="tick" style="left:50%"></i>
+        <i class="tick tick-end"></i>
+      </div>
+      <div class="hero-ticks">
+        <span class="t-60">60分钟</span>
+        <span class="t-120">120分钟红线</span>
+      </div>
+      <p class="hero-status" id="heroStatus"></p>
+    </section>
+
+    <!-- 活动建议 -->
+    <section class="card">
+      <div class="card-head">
+        <span class="icon" aria-hidden="true">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="m12 3-1.9 5.8a2 2 0 0 1-1.3 1.3L3 12l5.8 1.9a2 2 0 0 1 1.3 1.3L12 21l1.9-5.8a2 2 0 0 1 1.3-1.3L21 12l-5.8-1.9a2 2 0 0 1-1.3-1.3L12 3Z"/></svg>
+        </span>
+        <h2>活动建议</h2>
+        <span class="unit">3~5 分钟</span>
+      </div>
+      <p class="tip-text" id="tipText"></p>
+      <button class="btn-refresh" id="btnTip" type="button">
+        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12a9 9 0 0 1 9-9 9.75 9.75 0 0 1 6.74 2.74L21 8"/><path d="M21 3v5h-5"/><path d="M21 12a9 9 0 0 1-9 9 9.75 9.75 0 0 1-6.74-2.74L3 16"/><path d="M8 16H3v5"/></svg>
+        换一条
+      </button>
+    </section>
+
+    <!-- 今日累计 -->
+    <section class="card">
+      <div class="card-head">
+        <span class="icon" aria-hidden="true">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3v18h18"/><path d="M18 17V9"/><path d="M13 17V5"/><path d="M8 17v-3"/></svg>
+        </span>
+        <h2>今日累计</h2>
+        <span class="unit">实时</span>
+      </div>
+      <div class="duo-grid">
+        <div class="stat-cell"><div class="num sit" id="todayBreaks">--</div><div class="lbl">已起身（次）</div></div>
+        <div class="stat-cell"><div class="num green" id="todayActivity">--</div><div class="lbl">活动时长（分钟）</div></div>
+      </div>
+    </section>
+
+    <!-- 操作区 -->
+    <section class="action-area">
+      <button class="btn btn-primary" id="btnComplete" type="button">一键完成</button>
+      <button class="btn btn-ghost" id="btnCancel" type="button">一键取消</button>
+      <p class="action-hint">完成后将同步到今日与本周统计</p>
+    </section>
+
+  </main>
+
+  <footer class="app-footer">原型演示 · 强提醒态预览：reminder.html?strong=1 · 完成/取消后返回数据看板</footer>
+
+  <!-- 轻提示 -->
+  <div class="toast" id="toast" hidden></div>
+</div>
+
+<script src="mock.js"></script>
+<script src="reminder.js"></script>
+</body>
+</html>
