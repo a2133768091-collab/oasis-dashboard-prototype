@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>工位绿洲 · 数据看板原型</title>
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<div class="phone">
+
+  <!-- 顶部品牌区 -->
+  <header class="app-header">
+    <div class="brand">
+      <span class="brand-icon" aria-hidden="true">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M11 20A7 7 0 0 1 9.8 6.1C15.5 5 17 4.48 19 2c1 2 2 4.18 2 8 0 5.5-4.78 10-10 10Z"/><path d="M2 21c0-3 1.85-5.36 5.08-6C9.5 14.52 12 13 13 12"/></svg>
+      </span>
+      <div class="brand-text">
+        <h1>工位绿洲</h1>
+        <p>数据看板 · 原型</p>
+      </div>
+    </div>
+    <div class="header-side">
+      <a class="header-link" href="reminder.html" title="久坐提醒页演示" aria-label="久坐提醒页演示">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M6 8a6 6 0 0 1 12 0c0 7 3 9 3 9H3s3-2 3-9"/><path d="M10.3 21a1.94 1.94 0 0 0 3.4 0"/></svg>
+      </a>
+      <span class="mock-badge">Mock</span>
+    </div>
+  </header>
+
+  <!-- 日 / 周切换 -->
+  <nav class="seg-wrap">
+    <div class="segmented" role="tablist" aria-label="视图切换">
+      <button id="segDay" class="seg-btn" role="tab" data-mode="day">日</button>
+      <button id="segWeek" class="seg-btn" role="tab" data-mode="week">周</button>
+    </div>
+  </nav>
+
+  <!-- 视图容器：由 app.js 渲染日/周两套模板 -->
+  <main id="view" class="view">
+    <div class="skel skel-card"></div>
+    <div class="skel skel-card"></div>
+    <div class="skel skel-card tall"></div>
+  </main>
+
+  <footer class="app-footer">原型演示 · 数据为 Mock · 健康参数依据 WHO 2020 / 膳食指南 2022 / AAO 20-20-20</footer>
+</div>
+
+<script src="mock.js"></script>
+<script src="api.js"></script>
+<script src="app.js"></script>
+</body>
+</html>
