@@ -1,0 +1,120 @@
+/* reminder.css —— 久坐提醒页原型（复用 styles.css tokens） */
+
+/* ---- 状态 hero：三态渐变 ---- */
+.hero {
+  border-radius: var(--radius-lg);
+  padding: 18px 16px 16px;
+  color: #fff;
+  background: linear-gradient(135deg, #0f5132 0%, #17603d 100%);
+  box-shadow: var(--shadow-card);
+  animation: fadeUp .4s ease both;
+}
+.hero.st-warn   { background: linear-gradient(135deg, #b07a24 0%, #d9a545 100%); }
+.hero.st-strong { background: linear-gradient(135deg, #a93226 0%, #c0392b 100%); }
+
+.hero-top { display: flex; align-items: center; justify-content: space-between; }
+.hero-label { font-size: 12px; opacity: .8; }
+.strong-badge {
+  font-size: 11px;
+  padding: 3px 10px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, .22);
+  border: 1px solid rgba(255, 255, 255, .45);
+}
+.strong-badge b { font-variant-numeric: tabular-nums; }
+
+.hero-min { margin: 10px 0 14px; display: flex; align-items: baseline; gap: 8px; }
+.hero-min b {
+  font-size: 54px; font-weight: 700; line-height: 1;
+  font-variant-numeric: tabular-nums; letter-spacing: 1px;
+}
+.hero-min span { font-size: 14px; opacity: .85; }
+
+/* 进度条：0 → 60 分钟（50%）→ 120 分钟红线（100%） */
+.hero-track {
+  position: relative;
+  height: 8px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, .25);
+}
+.hero-fill {
+  position: absolute; inset: 0 auto 0 0;
+  width: 0;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, .95);
+  transition: width .5s ease-out;
+}
+.hero-track .tick {
+  position: absolute; top: -3px;
+  width: 2px; height: 14px;
+  background: rgba(255, 255, 255, .55);
+  border-radius: 1px;
+}
+.hero-track .tick-end { right: 0; }
+.hero-ticks { position: relative; height: 16px; margin-top: 4px; }
+.hero-ticks span {
+  position: absolute; top: 0;
+  font-size: 10px; opacity: .75;
+  transform: translateX(-50%);
+  white-space: nowrap;
+}
+.hero-ticks .t-60 { left: 50%; }
+.hero-ticks .t-120 { left: 100%; transform: translateX(-100%); }
+
+.hero-status { margin-top: 8px; font-size: 12px; opacity: .9; }
+
+/* ---- 活动建议 ---- */
+.tip-text { font-size: 14px; line-height: 1.8; min-height: 50px; }
+.btn-refresh {
+  margin-top: 10px;
+  display: inline-flex; align-items: center; gap: 6px;
+  font-family: var(--font-body);
+  font-size: 12px; color: var(--primary);
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  padding: 6px 14px;
+  cursor: pointer;
+  transition: background .15s;
+}
+.btn-refresh:hover { background: var(--phone-bg); }
+.btn-refresh:active { transform: scale(.96); }
+
+/* ---- 今日累计：两格 ---- */
+.duo-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+
+/* ---- 操作区按钮 ---- */
+.action-area { display: flex; flex-direction: column; gap: 10px; padding: 4px 2px 0; }
+.btn {
+  width: 100%;
+  border: none;
+  font-family: var(--font-body);
+  font-size: 15px; font-weight: 700;
+  padding: 13px 0;
+  border-radius: var(--radius-md);
+  cursor: pointer;
+  transition: transform .1s, background .15s;
+}
+.btn-primary { background: var(--primary); color: #fff; box-shadow: 0 4px 12px rgba(15, 81, 50, .25); }
+.btn-primary:hover { background: var(--primary-hover); }
+.btn-primary:active { transform: scale(.98); }
+.btn-primary[disabled] { opacity: .6; cursor: default; }
+.btn-ghost { background: var(--surface); color: var(--text-sub); border: 1.5px solid var(--border); }
+.btn-ghost:hover { background: #f0f3f1; }
+.btn-ghost:active { transform: scale(.98); }
+.action-hint { text-align: center; font-size: 11px; color: var(--text-sub); }
+
+/* ---- 轻提示 ---- */
+.toast {
+  position: absolute;
+  left: 50%; bottom: 96px;
+  transform: translateX(-50%);
+  background: rgba(36, 53, 44, .92);
+  color: #fff;
+  font-size: 13px;
+  padding: 9px 18px;
+  border-radius: 999px;
+  z-index: 50;
+  white-space: nowrap;
+  animation: fadeUp .25s ease both;
+}
